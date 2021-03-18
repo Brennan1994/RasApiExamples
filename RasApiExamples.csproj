@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!--Can't make a .Net Core version since this references RasMapperLib, a 472 build-->
+    <TargetFramework>net472</TargetFramework>
+    <Platforms>x64</Platforms>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="..\References\RasMapperLib.dll" />
+    <Reference Include="..\References\Utility.Core.dll" />
+    <Reference Include="..\References\TiffAssist.dll" />
+    <Reference Include="..\References\H5Assist.dll" />
+    <Reference Include="..\References\TiffBinaryReader.dll" />
+    <Reference Include="..\References\Geospatial.Core.dll" />
+    <Reference Include="..\References\Geospatial.GDALAssist.dll" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+</Project>
