@@ -2,7 +2,7 @@
   <PropertyGroup>
     <!--Can't make a .Net Core version since this references RasMapperLib, a 472 build-->
     <TargetFramework>net472</TargetFramework>
-    <Platforms>x64</Platforms>
+    <Platforms>x64;AnyCPU</Platforms>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
     <StartupObject />

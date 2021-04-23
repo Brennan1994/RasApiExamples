@@ -1,10 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Geospatial.GDALAssist;
-
 using RasMapperLib;
 using RasMapperLib.Mapping;
 
@@ -17,23 +13,21 @@ namespace RasApiExamples
             // TODO - work with reprojection here.
             var ptLayer = new PointFeatureLayer("name", inputPointShp);
 
-            var pts2 = ptLayer.Points().Select(p => p.PointM()).ToArray();
+            var pntLayerConverted = ptLayer.Points().Select(p => p.PointM()).ToArray();
             var sourceProj = ShapefileStorage.GetProjection(inputPointShp);
             if(sourceProj != null)
             {
                 var desproj = new ESRIProjection(inputPrj);
-                var convertedPts = RasMapperLib.Utilities.Converter.Convert(pts2); //Transfers to new world to work with 7.0 Gdal Raster stuff
+                var convertedPts = RasMapperLib.Utilities.Converter.Convert(pntLayerConverted); //Transfers to new world to work with 7.0 Gdal Raster stuff
                 Projector.TransformPoints(sourceProj, desproj, convertedPts);
-                for (int i =0; i<pts2.Length; i++)
+                for (int i =0; i<pntLayerConverted.Length; i++)
                 {
-                    pts2[i] = RasMapperLib.Utilities.Converter.ConvertPtM(convertedPts[i]);
+                    pntLayerConverted[i] = RasMapperLib.Utilities.Converter.ConvertPtM(convertedPts[i]);
                 }
             }
-
-
             var terr = new TerrainLayer("terr", terrainFile);
 
-            PointMs pts = new PointMs(pts2);
+            PointMs pts = new PointMs(pntLayerConverted);
             float[] ptElevs = terr.ComputePointElevations(pts);
 
             // Set up the output shapefile

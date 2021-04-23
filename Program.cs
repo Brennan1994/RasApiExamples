@@ -33,7 +33,7 @@ namespace RasApiExamples
         static void Main(string[] args)
         {
             // Point this to your RAS install directory
-            string installDirectory = ".\\";
+            string installDirectory = @"C:\Programs\Git\Repos\RasApiExamples\bin\Debug\net472";
             string gdalDirectory = Path.Combine(installDirectory, "GDAL");
 
             if (!Directory.Exists(gdalDirectory))
@@ -47,16 +47,71 @@ namespace RasApiExamples
             // To target an older v5 distribution, you'll have to use the "Initialize" call, and point it
             // manually to the x86/x64 sub-directory.
             GDALSetup.InitializeMultiplatform(gdalDirectory);
-
-            string resDirectory = @"C:\Users\q0hecbbb\Projects\FDA vs Event Tree LifeSim\Data Collection\West_Sac_Material\Hydraulics\RAS\West_Sac_HECRAS\RAS_Model";
+            string resDirectory = @"C:\Projects\Work\FDA Related\dropbox\For_Brennan\West_Sac_HECRAS\RAS_Model";
             var resFiles = Directory.GetFiles(resDirectory, "*.p*.hdf");
 
-            string terrFilez = @"C:\Users\q0hecbbb\Projects\FDA vs Event Tree LifeSim\Data Collection\West_Sac_Material\Hydraulics\RAS\West_Sac_HECRAS\RAS_Model\Terrain\Terrain.hdf";
-            string ptShpFile = @"C:\Users\q0hecbbb\Projects\FDA vs Event Tree LifeSim\Working\GIS\Final_Structure_Inventory.shp";
-            string projShpPrj = @"C:\Users\q0hecbbb\Projects\FDA vs Event Tree LifeSim\Working\RAS\West_Sac_HECRAS\RAS_Model - Copy\Terrain\NAD 1983 StatePlane California II FIPS 0402 (US Feet).prj";
+            string terrFilez = @"C:\Projects\Work\FDA Related\dropbox\For_Brennan\West_Sac_HECRAS\RAS_Model\Terrain\Terrain.hdf";
+            string ptShpFile = @"C:\Projects\Work\FDA Related\for alex\Final_Structure_Inventory.shp";
+            string projShpPrj = @"C:\Projects\Work\FDA Related\dropbox\For_Brennan\West_Sac_HECRAS\RAS_Model\Terrain\NAD 1983 StatePlane California II FIPS 0402 (US Feet).prj";
 
-            SampleGridExportShapefile.ExportMaxDepthShapefile(resFiles, terrFilez, ptShpFile,projShpPrj, @"C:\Temp\ForBrennanOutput.shp");
+            SampleGridExportShapefile.ExportMaxDepthShapefile(resFiles, terrFilez, projShpPrj, ptShpFile, @"C:\Temp\ForBrennanOutput.shp");
             return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             // Sample result/terrain.
             string resultFile = @"C:\Work\_datasets\_core\Muncie\Muncie.p03.hdf";
